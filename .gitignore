@@ -1,0 +1,4 @@
+3dobj-renderer
+*.o
+Makefile
+ui_mainwindow.h
