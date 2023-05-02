@@ -30,9 +30,19 @@
     <property name="spacing">
      <number>0</number>
     </property>
+    <item row="0" column="0">
+     <widget class="OPGLWidget" name="openGLWidget"/>
+    </item>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OPGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>opglwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
