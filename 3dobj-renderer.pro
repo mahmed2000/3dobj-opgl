@@ -4,7 +4,10 @@
 
 TEMPLATE = app
 TARGET = 3dobj-renderer
-INCLUDEPATH += .
+INCLUDEPATH += . \
+	/usr/include/GL
+DEPENDPATH += . \
+	/usr/include/GL
 
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -14,7 +17,6 @@ INCLUDEPATH += .
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-SOURCES += main.cpp
+SOURCES += main.cpp opglwidget.cpp
 FORMS += mainwindow.ui
-
 QT += core gui widgets
