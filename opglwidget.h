@@ -8,4 +8,7 @@ protected:
 	void paintGL();
 	void initializeGL();
 	void resizeGL(int w, int h);
+	void reorient();
+
+	float loc[3] = {-10, 0, -10};
 };
