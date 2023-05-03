@@ -24,6 +24,7 @@ void OPGLWidget::initializeGL() {
 
 	ObjectLoader obj;
 	obj.load_mtl("untitled.mtl");
+	obj.load_obj("untitled.obj");
 }
 
 void OPGLWidget::paintGL() {

@@ -6,7 +6,7 @@ struct Vertex {
 };
 
 struct Normal {
-	float pos[3];
+	float dir[3];
 };
 
 struct Material {
@@ -18,9 +18,9 @@ struct Material {
 };
 
 struct Face {
-	vector<Vertex> vertices;
-	Normal normal;
-	Material mtl;
+	vector<Vertex*> vertices;
+	vector<Normal*> normals;
+	Material* mtl;
 };
 
 class ObjectLoader 
@@ -32,6 +32,8 @@ public:
 	vector<Face> faces;
 
 protected:
+	Material* get_mtl_ptr(string mtl_name);
+
 	vector<Vertex> vertices;
 	vector<Normal> normals;
 	vector<Material> mtls;
