@@ -2,7 +2,6 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
-#include <iostream>
 
 void OPGLWidget::initializeGL() {
 	glClearDepth(1.0f);

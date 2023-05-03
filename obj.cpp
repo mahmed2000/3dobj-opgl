@@ -4,7 +4,6 @@
 #include <string>
 #include <cstring>
 #include <regex>
-#include <iostream>
 
 void ObjectLoader::load_mtl(string filename) {
 	string tmp;
