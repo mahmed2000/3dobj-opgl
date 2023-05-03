@@ -12,6 +12,7 @@ protected:
 	void reorient();
 
 	int mtl_idx = -1;
-	float loc[3] = {10, 0, 10};
+	float loc[3] = {0, 0, 10};
+	float f[3] = {0, 0, -1};
 	ObjectLoader obj;
 };

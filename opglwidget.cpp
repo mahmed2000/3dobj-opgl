@@ -50,9 +50,6 @@ void OPGLWidget::paintGL() {
 }
 
 void OPGLWidget::reorient() {
-	float F_mag = pow(pow(loc[0], 2) + pow(loc[1], 2) +pow(loc[2], 2), 0.5);
-	GLfloat f[] = {-loc[0]/F_mag, -loc[1] / F_mag, -loc[2] / F_mag};
-
 	GLfloat s[] = {-f[2], 0, f[0]};
 	float s_mag = pow(pow(s[0], 2) + pow(s[1], 2) + pow(s[2], 2), 0.5);
 
