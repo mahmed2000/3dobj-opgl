@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 #include <regex>
+#include <iostream>
 
 void ObjectLoader::load_mtl(string filename) {
 	string tmp;
@@ -76,9 +77,9 @@ void ObjectLoader::load_obj(string filename) {
 			regex_search(tmp, match, re);
 			for (int i = 1; i < 7; i++) {
 				if (i % 2 == 0) {
-					faces.back().normals.push_back(&(normals[stoi(match.str(i))]));
+					faces.back().normals.push_back(&(normals[stoi(match.str(i)) - 1]));
 				} else {
-					faces.back().vertices.push_back(&(vertices[stoi(match.str(i))]));
+					faces.back().vertices.push_back(&(vertices[stoi(match.str(i)) - 1]));
 				};
 			};
 		};

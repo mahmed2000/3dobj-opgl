@@ -1,4 +1,5 @@
 #include <QtWidgets/QOpenGLWidget>
+#include "obj.h"
 
 class OPGLWidget : public QOpenGLWidget
 {
@@ -12,4 +13,5 @@ protected:
 
 	int mtl_idx = -1;
 	float loc[3] = {-10, 0, -10};
+	ObjectLoader obj;
 };

@@ -2,7 +2,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
-#include "obj.h"
+#include <iostream>
 
 void OPGLWidget::initializeGL() {
 	glClearDepth(1.0f);
@@ -22,7 +22,6 @@ void OPGLWidget::initializeGL() {
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	ObjectLoader obj;
 	obj.load_mtl("untitled.mtl");
 	obj.load_obj("untitled.obj");
 }
@@ -30,7 +29,26 @@ void OPGLWidget::initializeGL() {
 void OPGLWidget::paintGL() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	reorient();
+	//reorient();
+	glTranslatef(0.0f, 0.0f, -10.0f);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glBegin(GL_TRIANGLES);
+	for (int i = 0; i < obj.faces.size(); i++) {
+		Material* mtl_ptr = obj.faces[i].mtl;
+		if (mtl_idx != mtl_ptr->idx) {
+			glMaterialfv(GL_FRONT, GL_AMBIENT, mtl_ptr -> ambient);
+			glMaterialfv(GL_FRONT, GL_DIFFUSE, mtl_ptr -> diffuse);
+			glMaterialfv(GL_FRONT, GL_SPECULAR, mtl_ptr -> specular);
+			glMaterialf(GL_FRONT, GL_SHININESS, {128.0f});
+			mtl_idx =mtl_ptr->idx;
+		};
+		for (int j = 0; j < 3; j++) {
+			glVertex3fv(obj.faces[i].vertices[j] -> pos);
+			glNormal3fv(obj.faces[i].normals[j] -> dir);
+		};
+	};
+	glEnd();
+	glFlush();
 }
 
 void OPGLWidget::reorient() {
@@ -54,6 +72,6 @@ void OPGLWidget::resizeGL(int w, int h) {
 	float aspect = w / float(h);
 	float top = 0.2f * tan(M_PI / 8);
 	float right = 0.2f * tan(M_PI / 8) * aspect;
-	glFrustum(-right , right, -top, top, 0.1f, 100.0f);
+	glFrustum(-right, right, -top, top, 0.1f, 100.0f);
 	glMatrixMode(GL_MODELVIEW);
 }
