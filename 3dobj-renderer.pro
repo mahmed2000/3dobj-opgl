@@ -17,6 +17,6 @@ DEPENDPATH += . \
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-SOURCES += main.cpp opglwidget.cpp
+SOURCES += main.cpp opglwidget.cpp obj.cpp
 FORMS += mainwindow.ui
 QT += core gui widgets

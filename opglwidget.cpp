@@ -2,6 +2,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
+#include "obj.h"
 
 void OPGLWidget::initializeGL() {
 	glClearDepth(1.0f);
@@ -20,6 +21,9 @@ void OPGLWidget::initializeGL() {
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_array);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	ObjectLoader obj;
+	obj.load_mtl("untitled.mtl");
 }
 
 void OPGLWidget::paintGL() {

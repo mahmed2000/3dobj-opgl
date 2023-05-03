@@ -2,3 +2,5 @@
 *.o
 Makefile
 ui_mainwindow.h
+untitled.mtl
+untitled.obj

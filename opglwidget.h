@@ -10,5 +10,6 @@ protected:
 	void resizeGL(int w, int h);
 	void reorient();
 
+	int mtl_idx = -1;
 	float loc[3] = {-10, 0, -10};
 };
