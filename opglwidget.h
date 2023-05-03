@@ -12,6 +12,6 @@ protected:
 	void reorient();
 
 	int mtl_idx = -1;
-	float loc[3] = {-10, 0, -10};
+	float loc[3] = {10, 0, 10};
 	ObjectLoader obj;
 };

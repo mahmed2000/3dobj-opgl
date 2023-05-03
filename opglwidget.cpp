@@ -28,8 +28,7 @@ void OPGLWidget::initializeGL() {
 void OPGLWidget::paintGL() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	//reorient();
-	glTranslatef(0.0f, 0.0f, -10.0f);
+	reorient();
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < obj.faces.size(); i++) {
@@ -51,13 +50,13 @@ void OPGLWidget::paintGL() {
 }
 
 void OPGLWidget::reorient() {
-	float F_mag = pow(loc[0], 2) + pow(loc[1], 2) +pow(loc[2], 2);
+	float F_mag = pow(pow(loc[0], 2) + pow(loc[1], 2) +pow(loc[2], 2), 0.5);
 	GLfloat f[] = {-loc[0]/F_mag, -loc[1] / F_mag, -loc[2] / F_mag};
 
 	GLfloat s[] = {-f[2], 0, f[0]};
-	float s_mag = pow(s[0], 2) + pow(s[1], 2) + pow(s[2], 2);
+	float s_mag = pow(pow(s[0], 2) + pow(s[1], 2) + pow(s[2], 2), 0.5);
 
-	GLfloat u[] = {(s[1] * f[2] - s[2] * f[1]) / s_mag, (s[0] * f[2] - s[2] * f[0]) / s_mag, (s[0] * f[1] - s[1] * f[0]) / s_mag};
+	GLfloat u[] = {(s[1] * f[2] - s[2] * f[1]) / s_mag, -(s[0] * f[2] - s[2] * f[0]) / s_mag, (s[0] * f[1] - s[1] * f[0]) / s_mag};
 
 	const GLfloat m[] = {s[0], u[0], -f[0], 0, s[1], u[1], -f[1], 0, s[2], u[2], -f[2], 0, 0, 0, 0, 1};
 	glMultMatrixf(m);
