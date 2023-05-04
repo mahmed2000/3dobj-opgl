@@ -8,6 +8,7 @@ public:
 	OPGLWidget(QWidget *parent) : QOpenGLWidget(parent) {}
 public slots:
 	void paintGL();
+	void update_camera();
 protected:
 	void initializeGL();
 	void resizeGL(int w, int h);

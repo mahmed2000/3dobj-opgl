@@ -26,7 +26,6 @@ void OPGLWidget::initializeGL() {
 }
 
 void OPGLWidget::paintGL() {
-	for (int i = 0; i < 3; i++) {loc[i] += vel[i];};
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	reorient();
@@ -71,4 +70,10 @@ void OPGLWidget::resizeGL(int w, int h) {
 	float right = 0.2f * tan(M_PI / 8) * aspect;
 	glFrustum(-right, right, -top, top, 0.1f, 100.0f);
 	glMatrixMode(GL_MODELVIEW);
+}
+
+void OPGLWidget::update_camera() {
+	for (int i = 0; i < 3; i++) {
+		loc[i] += vel[i];
+	};
 }
