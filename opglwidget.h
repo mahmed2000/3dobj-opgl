@@ -3,10 +3,12 @@
 
 class OPGLWidget : public QOpenGLWidget
 {
+	Q_OBJECT
 public:
 	OPGLWidget(QWidget *parent) : QOpenGLWidget(parent) {}
-protected:
+public slots:
 	void paintGL();
+protected:
 	void initializeGL();
 	void resizeGL(int w, int h);
 	void reorient();
@@ -14,5 +16,6 @@ protected:
 	int mtl_idx = -1;
 	float loc[3] = {0, 0, 10};
 	float f[3] = {0, 0, -1};
+	float vel[3] = {0, 0, -0.01};
 	ObjectLoader obj;
 };

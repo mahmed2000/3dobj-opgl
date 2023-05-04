@@ -26,6 +26,7 @@ void OPGLWidget::initializeGL() {
 }
 
 void OPGLWidget::paintGL() {
+	for (int i = 0; i < 3; i++) {loc[i] += vel[i];};
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	reorient();
@@ -47,6 +48,7 @@ void OPGLWidget::paintGL() {
 	};
 	glEnd();
 	glFlush();
+	update();
 }
 
 void OPGLWidget::reorient() {

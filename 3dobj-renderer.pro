@@ -18,5 +18,6 @@ DEPENDPATH += . \
 
 # Input
 SOURCES += main.cpp opglwidget.cpp obj.cpp
+HEADERS += ui_mainwindow.h opglwidget.h obj.h
 FORMS += mainwindow.ui
 QT += core gui widgets
