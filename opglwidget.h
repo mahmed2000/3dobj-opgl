@@ -1,6 +1,7 @@
 #include <QtWidgets/QOpenGLWidget>
 #include "obj.h"
 #include <QKeyEvent>
+#include <QMouseEvent>
 
 class OPGLWidget : public QOpenGLWidget
 {
@@ -17,6 +18,9 @@ protected:
 
 	void keyPressEvent(QKeyEvent *event);
 	void keyReleaseEvent(QKeyEvent *event);
+	void mousePressEvent(QMouseEvent *event);
+	void mouseReleaseEvent(QMouseEvent *event);
+	void mouseMoveEvent(QMouseEvent *event);
 
 	int mtl_idx = -1;
 	float loc[3] = {0, 0, 10};
@@ -27,4 +31,5 @@ protected:
 	float speed = 0;
 	ObjectLoader obj;
 	bool key_states[6] = {false, false, false, false, false, false};
+	float mouse_loc_old[2];
 };

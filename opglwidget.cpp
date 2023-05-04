@@ -177,4 +177,33 @@ void OPGLWidget::keyReleaseEvent(QKeyEvent *event) {
 	};
 }
 
+void OPGLWidget::mousePressEvent(QMouseEvent *event) {
+	setMouseTracking(true);
+	mouse_loc_old[0] = event -> x();
+	mouse_loc_old[1] = event -> y();
+}
 
+void OPGLWidget::mouseReleaseEvent(QMouseEvent *event) {
+	setMouseTracking(false);
+	mouse_loc_old[0] = event -> x();
+	mouse_loc_old[1] = event -> y();
+}
+
+void OPGLWidget::mouseMoveEvent(QMouseEvent *event) {
+	float delta_x = event->x() - mouse_loc_old[0];
+	float delta_y = event->y() - mouse_loc_old[1];
+	mouse_loc_old[0] = event->x();
+	mouse_loc_old[1] = event->y();
+	for (int i = 0; i < 3; i++) {
+		f[i] += right[i] * delta_x / 1000.0f;
+		f[i] -= up[i] * delta_y / 1000.0f;
+	}
+	right[0] = -f[2];
+	right[2] = f[0];
+	float F_mag = pow(pow(f[0], 2) + pow(f[1], 2) + pow(f[2], 2), 0.5);
+	float right_mag = pow(pow(right[0], 2) + pow(right[1], 2) + pow(right[2], 2), 0.5);
+	for (int i = 0; i < 3; i++) {
+		f[i] = f[i] / F_mag;
+		right[i] = right[i] / right_mag;
+	}
+}
