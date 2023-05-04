@@ -2,6 +2,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>
+#include <QKeyEvent>
 
 void OPGLWidget::initializeGL() {
 	glClearDepth(1.0f);
@@ -74,6 +75,106 @@ void OPGLWidget::resizeGL(int w, int h) {
 
 void OPGLWidget::update_camera() {
 	for (int i = 0; i < 3; i++) {
-		loc[i] += vel[i];
+		loc[i] += vel[i] * speed/100.0f;
+	};
+	if (key_states[0]) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] += f[i];
+		}
+	};
+	if (key_states[1]) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] -= f[i];
+		}
+	};
+	if (key_states[2]) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] += right[i];
+		}
+	};
+	if (key_states[3]) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] -= right[i];
+		}
+	};
+	if (key_states[4]) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] += up[i];
+		}
+	};
+	if (key_states[5]) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] -= up[i];
+		}
+	};
+	speed = pow(pow(vel[0], 2) + pow(vel[1], 2) + pow(vel[2], 2), 0.5);
+	if (speed > 2) {
+		for (int i = 0; i < 3; i++) {
+			vel[i] = vel[i] / speed;
+		}
+	}
+	bool allFalse = true;
+	for (int i = 0; i < 6; i++) {
+		if (key_states[i]) {
+			allFalse = false;
+			break;
+		}
+	}
+	if (allFalse) {
+		for (int i = 0; i < 3; i++) {
+			if (speed > 0.1f) {
+				vel[i] -= vel[i] * speed / 10.0f;
+			} else {
+				vel[i] = 0.0f;
+			}
+		}
+	}
+}
+
+void OPGLWidget::keyPressEvent(QKeyEvent *event) {
+	switch (event -> key()) {
+		case Qt::Key_W:
+			key_states[0] = true;
+			break;
+		case Qt::Key_S:
+			key_states[1] = true;
+			break;
+		case Qt::Key_D:
+			key_states[2] = true;
+			break;
+		case Qt::Key_A:
+			key_states[3] = true;
+			break;
+		case Qt::Key_Space:
+			key_states[4] = true;
+			break;
+		case Qt::Key_Control:
+			key_states[5] = true;
+			break;
 	};
 }
+
+void OPGLWidget::keyReleaseEvent(QKeyEvent *event) {
+	switch (event -> key()) {
+		case Qt::Key_W:
+			key_states[0] = false;
+			break;
+		case Qt::Key_S:
+			key_states[1] = false;
+			break;
+		case Qt::Key_D:
+			key_states[2] = false;
+			break;
+		case Qt::Key_A:
+			key_states[3] = false;
+			break;
+		case Qt::Key_Space:
+			key_states[4] = false;
+			break;
+		case Qt::Key_Control:
+			key_states[5] = false;
+			break;
+	};
+}
+
+

@@ -31,7 +31,11 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="OPGLWidget" name="openGLWidget"/>
+     <widget class="OPGLWidget" name="openGLWidget">
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
