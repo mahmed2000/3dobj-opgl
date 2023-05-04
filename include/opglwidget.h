@@ -8,6 +8,7 @@ class OPGLWidget : public QOpenGLWidget
 	Q_OBJECT
 public:
 	OPGLWidget(QWidget *parent) : QOpenGLWidget(parent) {}
+	ObjectLoader obj;
 public slots:
 	void paintGL();
 	void update_camera();
@@ -29,7 +30,6 @@ protected:
 	float right[3] = {1, 0, 0};
 	float vel[3] = {0, 0, 0};
 	float speed = 0;
-	ObjectLoader obj;
 	bool key_states[6] = {false, false, false, false, false, false};
 	float mouse_loc_old[2];
 };

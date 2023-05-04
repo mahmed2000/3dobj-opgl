@@ -21,9 +21,6 @@ void OPGLWidget::initializeGL() {
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_array);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-	obj.load_mtl("untitled.mtl");
-	obj.load_obj("untitled.obj");
 }
 
 void OPGLWidget::paintGL() {

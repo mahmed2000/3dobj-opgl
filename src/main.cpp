@@ -8,6 +8,10 @@ int main(int argc, char **argv) {
 	QMainWindow w;
 	Ui::MainWindow ui;
 	ui.setupUi(&w);
+	
+	ui.openGLWidget->obj.load_mtl("untitled.mtl");
+	ui.openGLWidget->obj.load_obj("untitled.obj");
+
 	QTimer timer_draw;
 	QTimer timer_cam;
 	w.connect(&timer_draw, SIGNAL(timeout()), ui.openGLWidget, SLOT(paintGL()));
