@@ -1,7 +1,7 @@
 #include <QtWidgets/QApplication>
 #include <QMainWindow>
 #include <QTimer>
-#include "ui_mainwindow.h"
+#include "include/ui_mainwindow.h"
 
 int main(int argc, char **argv) {
 	QApplication app(argc, argv);

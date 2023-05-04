@@ -4,10 +4,6 @@
 
 TEMPLATE = app
 TARGET = 3dobj-renderer
-INCLUDEPATH += . \
-	/usr/include/GL
-DEPENDPATH += . \
-	/usr/include/GL
 
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -17,7 +13,11 @@ DEPENDPATH += . \
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-SOURCES += main.cpp opglwidget.cpp obj.cpp
-HEADERS += ui_mainwindow.h opglwidget.h obj.h
-FORMS += mainwindow.ui
+SOURCES += src/main.cpp src/opglwidget.cpp src/obj.cpp
+HEADERS += include/opglwidget.h include/obj.h
+FORMS += forms/mainwindow.ui
+MOC_DIR += build/moc
+UI_DIR += include/
+OBJECTS_DIR += build/objects
 QT += core gui widgets
+DESTDIR = $$PWD/bin

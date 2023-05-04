@@ -1,4 +1,4 @@
-#include "opglwidget.h"
+#include "include/opglwidget.h"
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <math.h>

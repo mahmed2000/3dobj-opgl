@@ -5,3 +5,5 @@ ui_mainwindow.h
 untitled.mtl
 untitled.obj
 moc*
+build/
+bin/
